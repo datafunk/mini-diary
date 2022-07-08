@@ -16,11 +16,13 @@ import translationsTr from "./translations/tr";
 import translationsUk from "./translations/uk";
 import translationsZh from "./translations/zh";
 import translationsZhTw from "./translations/zhTw";
+import translationsHu from "./translations/hu";
 
 const ALL_TRANSLATIONS: Record<string, Partial<Translations>> = {
 	de: translationsDe,
 	el: translationsEl,
 	en: translationsEn,
+	hu: translationsHu,
 	es: translationsEs,
 	fr: translationsFr,
 	is: translationsIs,
@@ -52,6 +54,8 @@ export function getUsedLang(): string {
  * otherwise fall back to default language
  */
 export function initI18n(): void {
+	// force translation without changing system
+	// systemLang = "hu";
 	systemLang = app.getLocale();
 	const systemLangNoRegion = systemLang.split("-")[0];
 	const defaultTranslations = ALL_TRANSLATIONS[FALLBACK_LANG];
